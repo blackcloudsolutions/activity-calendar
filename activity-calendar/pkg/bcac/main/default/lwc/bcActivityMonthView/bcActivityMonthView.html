@@ -1,0 +1,98 @@
+<template>
+  <lightning-card title={title}>
+    <div class="filter-bar">
+      <div class="legend" aria-label="Activity type filters">
+        <div class={chipClassTask}  role="button" tabindex="0" data-type="task"  onclick={onChipClick} onkeydown={onChipKey}>
+          <span class="dot task"  aria-hidden="true">●</span><span>Task</span>
+        </div>
+        <div class={chipClassEvent} role="button" tabindex="0" data-type="event" onclick={onChipClick} onkeydown={onChipKey}>
+          <span class="dot event" aria-hidden="true">●</span><span>Event</span>
+        </div>
+        <div class={chipClassCall}  role="button" tabindex="0" data-type="call"  onclick={onChipClick} onkeydown={onChipKey}>
+          <span class="dot call"  aria-hidden="true">●</span><span>Call</span>
+        </div>
+        <div class={chipClassEmail} role="button" tabindex="0" data-type="email" onclick={onChipClick} onkeydown={onChipKey}>
+          <span class="dot email" aria-hidden="true">●</span><span>Email</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="toolbar">
+      <lightning-button variant="neutral" label="Prev" onclick={prevMonth}></lightning-button>
+      <div class="month">{monthLabel}</div>
+      <lightning-button variant="neutral" label="Next" onclick={nextMonth}></lightning-button>
+    </div>
+
+    <div class="grid" role="grid" aria-label="Activity month grid">
+      <template for:each={weekdayLabels} for:item="w">
+        <div key={w} class="head" role="columnheader">{w}</div>
+      </template>
+
+      <template for:each={cells} for:item="c">
+        <div
+          key={c.key}
+          class={c.cellClass}
+          role="button"
+          tabindex={c.tabIndex}
+          data-day={c.day}
+          title={c.tooltip}
+          onclick={onCellClick}
+          onkeydown={onCellKey}>
+          <div class="daynum">{c.day}</div>
+          <div class="dots">
+            <template for:each={c.dots} for:item="d">
+              <span class={d} key={d}>●</span>
+            </template>
+          </div>
+        </div>
+      </template>
+    </div>
+
+    <!-- Collapsible month/day panel -->
+    <div class="collapsible">
+      <div class="collapse-header">
+        <lightning-button-icon
+          class="chev"
+          icon-name={panelIcon}
+          alternative-text="Toggle panel"
+          onclick={togglePanel}>
+        </lightning-button-icon>
+
+        <div class="collapse-title">{panelTitle}</div>
+
+        <div class="collapse-actions">
+          <template if:true={hasSelectedDay}>
+            <lightning-button variant="base" label="Clear Day Filter" onclick={clearDayFilter}></lightning-button>
+          </template>
+        </div>
+      </div>
+
+      <template if:true={panelOpen}>
+        <template if:true={displayedItems.length}>
+          <ul class="drawer-list">
+            <template for:each={displayedItems} for:item="it">
+              <li key={it.id} class="drawer-row">
+                <span class={it.dotClass} title={it.type}>●</span>
+                <span class="drawer-type">{it.type}</span>
+                <span class="drawer-time">{it.time}</span>
+                <button class="drawer-subject linklike" data-id={it.id} onclick={handleGo}>
+                  {it.subject}
+                </button>
+              </li>
+            </template>
+          </ul>
+
+          <template if:true={showMonthShowMore}>
+            <div class="show-more-wrap">
+              <lightning-button variant="neutral" label="Show more" onclick={showMoreMonth}></lightning-button>
+            </div>
+          </template>
+        </template>
+
+        <template if:false={displayedItems.length}>
+          <div class="drawer-empty">No items to display.</div>
+        </template>
+      </template>
+    </div>
+  </lightning-card>
+</template>

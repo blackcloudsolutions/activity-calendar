@@ -1,0 +1,9 @@
+{
+  "orgName": "Activity Calendar Dev",
+  "edition": "Developer",
+  "settings": {
+    "emailAdministrationSettings": {
+      "enableEnhancedEmailEnabled": true
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "packageDirectories": [
+    {
+      "versionName": "ver 1.1",
+      "versionNumber": "1.1.0.NEXT",
+      "path": "pkg/bcac",
+      "default": true,
+      "package": "BC Activity Calendar",
+      "versionDescription": "",
+      "ancestorId": "04tQH000005JLfNYAW"
+    },
+    {
+      "path": "force-app",
+      "default": false
+    }
+  ],
+  "namespace": "blackcloud",
+  "sfdcLoginUrl": "https://login.salesforce.com",
+  "sourceApiVersion": "60.0",
+  "packageAliases": {
+    "BC Activity Calendar": "0HoQH0000000YRV0A2",
+    "BC Activity Calendar@0.1.0-1": "04tQH000005JLfNYAW",
+    "BC Activity Calendar@1.1.0-1": "04tQH000005JNm1YAG"
+  }
+}

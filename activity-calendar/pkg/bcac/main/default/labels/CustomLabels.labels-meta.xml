@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+  <labels><fullName>BCAC_Task</fullName><language>en_GB</language><protected>false</protected><shortDescription>Task</shortDescription><value>Task</value></labels>
+  <labels><fullName>BCAC_Event</fullName><language>en_GB</language><protected>false</protected><shortDescription>Event</shortDescription><value>Event</value></labels>
+  <labels><fullName>BCAC_Call</fullName><language>en_GB</language><protected>false</protected><shortDescription>Call</shortDescription><value>Call</value></labels>
+  <labels><fullName>BCAC_Email</fullName><language>en_GB</language><protected>false</protected><shortDescription>Email</shortDescription><value>Email</value></labels>
+  <labels><fullName>BCAC_Activities</fullName><language>en_GB</language><protected>false</protected><shortDescription>Activities</shortDescription><value>Activities</value></labels>
+  <labels><fullName>BCAC_ShowMore</fullName><language>en_GB</language><protected>false</protected><shortDescription>Show more</shortDescription><value>Show more</value></labels>
+  <labels><fullName>BCAC_ClearDayFilter</fullName><language>en_GB</language><protected>false</protected><shortDescription>Clear Day Filter</shortDescription><value>Clear Day Filter</value></labels>
+  <labels><fullName>BCAC_ShowLess</fullName><categories>BCAC</categories><language>en_US</language> <protected>false</protected><shortDescription>Show Less button</shortDescription><value>Show less</value></labels>
+</CustomLabels>

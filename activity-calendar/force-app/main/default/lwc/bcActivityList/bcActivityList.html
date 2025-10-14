@@ -1,0 +1,50 @@
+<template>
+  <lightning-card title={title}>
+    <div class="filter-bar">
+      <div class="legend" aria-label="Activity type filters">
+        <div class={chipClassTask}  role="button" tabindex="0" data-type="task"  onclick={onChipClick} onkeydown={onChipKey}>
+          <span class="dot task"  aria-hidden="true">●</span><span>{labelTask}</span>
+        </div>
+        <div class={chipClassEvent} role="button" tabindex="0" data-type="event" onclick={onChipClick} onkeydown={onChipKey}>
+          <span class="dot event" aria-hidden="true">●</span><span>{labelEvent}</span>
+        </div>
+        <div class={chipClassCall}  role="button" tabindex="0" data-type="call"  onclick={onChipClick} onkeydown={onChipKey}>
+          <span class="dot call"  aria-hidden="true">●</span><span>{labelCall}</span>
+        </div>
+        <div class={chipClassEmail} role="button" tabindex="0" data-type="email" onclick={onChipClick} onkeydown={onChipKey}>
+          <span class="dot email" aria-hidden="true">●</span><span>{labelEmail}</span>
+        </div>
+      </div>
+    </div>
+
+    <template if:true={loading}>
+      <lightning-spinner alternative-text="Loading"></lightning-spinner>
+    </template>
+
+    <template if:true={visibleItems.length}>
+      <ul class="list">
+        <template for:each={visibleItems} for:item="it">
+          <li key={it.id} class="row clickable" data-id={it.id} onclick={onRowClick} onkeydown={onRowKey} tabindex="0">
+            <span class={it.dotClass} title={it.type}>●</span>
+            <span class="date">{it.whenFormatted}</span>
+            <span class="type">{it.type}</span>
+            <span class="subject">{it.subject}</span>
+          </li>
+        </template>
+      </ul>
+
+      <template if:true={hasExtra}>
+        <div class="show-more-wrap">
+          <button class="show-more" onclick={handleShowMore}>{showToggleLabel}</button>
+        </div>
+      </template>
+    </template>
+
+    <template if:false={visibleItems.length}>
+      <p class="empty">
+        <template if:true={error}>{error}</template>
+        <template if:false={error}>No activities found for the selected types.</template>
+      </p>
+    </template>
+  </lightning-card>
+</template>
